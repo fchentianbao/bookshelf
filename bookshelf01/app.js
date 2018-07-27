@@ -64,6 +64,26 @@ router.get('/list', async (ctx, next) => {
         <p> ${book.bkcontex}</p>`;
 });
 
+router.get('/newBook', async (ctx, next) => {
+    ctx.response.body = `<h1>add new book</h1>
+        <form action="/addBook" method="post">
+            <p>书名: <input name="bkname" value="图书名称"></p>
+            <p>作者: <input name="author" ></p>
+            <p>简介: <input name="context" ></p>
+            <p><input type="submit" value="添加"></p>
+        </form>`;
+});
+
+router.get('/addBook', async (ctx, next) => {
+    var
+        name = ctx.request.body.bkname || '',
+        author = ctx.request.body.author || '',
+        bkctx = ctx.request.body.context || '';
+
+    ctx.response.body = `<h1>Welcome, ${name}!</h1>
+        <p> 作者： ${author}</p>
+        <p> 简介： ${bkctx}</p>`;
+});
 
 router.get('/viewBook/:bkname', async (ctx, next) => {
     var name = ctx.params.bkname;
