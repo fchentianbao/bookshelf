@@ -1,0 +1,13 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>图书列表</title>
+    </head>
+<body>
+    <h2>图书列表</h2>
+    {% for book in books %}
+    <h4>{{ book.bkname }}</h4>
+    <p>{{ book.bkcontex }}</p>
+    {% endfor %}
+</body>
+</html>
