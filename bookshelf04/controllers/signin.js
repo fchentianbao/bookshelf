@@ -1,4 +1,4 @@
-module.exports = async (ctx, next) => {
+var signin = async (ctx, next) => {
     var
         name = ctx.request.body.name || '',
         password = ctx.request.body.password || '';
@@ -10,3 +10,8 @@ module.exports = async (ctx, next) => {
         <p><a href="/">Try again</a></p>`;
     }
 }
+
+
+module.exports = {
+    "POST /signin" : signin
+};

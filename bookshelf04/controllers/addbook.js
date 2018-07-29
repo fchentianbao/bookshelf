@@ -1,4 +1,4 @@
-module.exports = async (ctx, next) => {
+var addBook = async (ctx, next) => {
     var
         name = ctx.request.body.bkname || '',
         author = ctx.request.body.author || '',
@@ -8,3 +8,7 @@ module.exports = async (ctx, next) => {
         <p> 作者： ${author}</p>
         <p> 简介： ${bkctx}</p>`;
 }
+
+module.exports = {
+    "POST /addBook" : addBook
+};

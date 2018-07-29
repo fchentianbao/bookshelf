@@ -1,7 +1,8 @@
 // 导入库
 const Koa = require("koa");
 const bodyParser = require('koa-bodyparser')
-const router = require('./routers/routers');
+//const router = require('./routers/routers');
+const controller = require('./routers/controller');
 const app = new Koa();
 app.use(bodyParser());
 
@@ -16,7 +17,7 @@ app.use(async (ctx, next) => {
         // however this is not a guarantee
         ctx.status = err.status || 500;
         ctx.type = 'html';
-        ctx.body = '<p>Something <em>exploded</em>, please contact Maru.</p>';
+        ctx.body = '<p>Something <em>exploded</em>, please contact fchentianbao@126.com.</p>';
     
         // since we handled this manually we'll
         // want to delegate to the regular app
@@ -24,9 +25,6 @@ app.use(async (ctx, next) => {
         // centralized still functions correctly.
         ctx.app.emit('error', err, ctx);
       }
-
- 
-
 });
 
 
@@ -40,7 +38,8 @@ app.on('error', function(err) {
   });
 
 
-app.use(router.routes());
+//app.use(router.routes());
+app.use(controller());
 
 app.listen(3000); // 监听端口
 console.log("app starting……");

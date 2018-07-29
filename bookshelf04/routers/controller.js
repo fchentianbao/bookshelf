@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path =  require('path');
 
-const router = require("koa-router");
+const router = require("koa-router")();
 
-function addmapping(maping) {
-    for (var url in maping) {
+function addmapping(mapping) {
+    for (var url in mapping) {
         if (url.startsWith('GET ')) {
             var path = url.substring(4);
             router.get(path, mapping[url]);
@@ -38,10 +38,10 @@ function addControllers(jsDir){
         return f.endsWith(".js");
     }).forEach((f) => {
         console.log(f);
-        let jspath = path.join(path.dirname(__dirname), dir, f);
-        const maping =  require(jspath);
-        console.log(maping);
-        addmapping(maping);
+        let jspath = path.join(jsDir, f);
+        const mapping =  require(jspath);
+        console.log(mapping);
+        addmapping(mapping);
     });
 }
 

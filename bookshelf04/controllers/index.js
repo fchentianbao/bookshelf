@@ -1,5 +1,5 @@
 
-module.exports = async (ctx, next) => {
+var index = async (ctx, next) => {
     ctx.response.body = `<h1>Index</h1>
         <form action="/signin" method="post">
             <p>Name: <input name="name" value="koa"></p>
@@ -7,3 +7,8 @@ module.exports = async (ctx, next) => {
             <p><input type="submit" value="Submit"></p>
         </form>`;
 }
+
+
+module.exports = {
+    "GET /" : index
+};
