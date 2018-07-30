@@ -1,3 +1,8 @@
+var newBook = async (ctx, next) => {
+    await await ctx.render('newbook');
+}
+
+
 var list = async (ctx, next) => {
     var book = {
         books : [
@@ -19,6 +24,23 @@ var list = async (ctx, next) => {
     await ctx.render('list', book);    
 }
 
+var viewBook = async (ctx, next) => {
+    var name = ctx.params.bkname;
+    await ctx.render('viewbook', {name: name});
+}
+
+var addBook = async (ctx, next) => {
+    var
+        name = ctx.request.body.bkname || '',
+        author = ctx.request.body.author || '',
+        bkctx = ctx.request.body.context || '';
+
+        await ctx.render('addbook', {name:name, author:author, bkctx : bkctx});   
+}
+
 module.exports = {
-  "GET /list" : list
+    "POST /addBook" : addBook,
+    "GET /viewBook/:bkname" : viewBook,
+    "GET /list" : list,
+    "GET /newBook" : newBook
 };
