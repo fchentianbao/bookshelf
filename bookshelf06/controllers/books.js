@@ -1,3 +1,6 @@
+const config = require('../config')
+var knex = require('knex')(config.db);
+
 var newBook = async (ctx, next) => {
     await await ctx.render('newbook');
 }
@@ -33,8 +36,23 @@ var addBook = async (ctx, next) => {
     var
         name = ctx.request.body.bkname || '',
         author = ctx.request.body.author || '',
+        publish = ctx.request.body.publish || '',
         bkctx = ctx.request.body.context || '';
+    
+        let book = {
+            bkname : name,
+            author : author,
+            bctx : bkctx,
+            bpublishtime = publish
+        }
 
+        await knex(config.tbbook).insert(book)
+        .catch(function (e) {
+            console.error(e);
+        })
+        .then(
+            console.log("feedback columns insert success")
+        );
         await ctx.render('addbook', {name:name, author:author, bkctx : bkctx});   
 }
 

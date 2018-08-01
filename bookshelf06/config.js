@@ -21,7 +21,9 @@ const CONF = {
         db: 'cAuth',
         pass: 'wx197380d5b17ace37',
         char: 'utf8mb4'
-    }
+    },
+    tbuser : 'users',
+    tbbook : 'books'
     
 };
 
