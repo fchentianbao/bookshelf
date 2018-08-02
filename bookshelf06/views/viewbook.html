@@ -4,6 +4,10 @@
         <title>{{name}}</title>
     </head>
 <body>
-    <p> {{name}}</p>
+     {% for book in books %}
+    <h3>书名： {{ book.bkname }} </h3>
+    <h4>作者 ： {{ book.author }} </h4>
+    <p> 内容： {{book.bctx}}</p>
+    {% endfor %}
 </body>
 </html>
