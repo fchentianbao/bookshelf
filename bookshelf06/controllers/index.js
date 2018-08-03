@@ -2,7 +2,11 @@ const config = require('../config')
 var knex = require('knex')(config.db);
 
 var index = async (ctx, next) => {
-    await ctx.render('index');    
+    if (ctx.session.userinfo == undefined || ctx.session.userinfo == "" ){
+        await ctx.render('index');  
+    } else {
+       ctx.response.redirect("/list");
+    }
 }
 
 
@@ -26,6 +30,7 @@ var signin = async (ctx, next) => {
                     console.log(data);
                     console.log("searchRecords by dateInfo success")
                     if (data.length > 0){
+                        ctx.session.userinfo = name;
                         ctx.response.redirect('/list');
                         ctx.response.body = '<a href="/">Index Page</a>';
                     }else

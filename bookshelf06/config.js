@@ -23,8 +23,17 @@ const CONF = {
         char: 'utf8mb4'
     },
     tbuser : 'users',
-    tbbook : 'books'
-    
+    tbbook : 'books',
+
+    sessionCon : {
+        key: 'koa:sess',
+       maxAge: 86400000,
+           overwrite: true,
+           httpOnly: true,
+           signed: true,
+           rolling: false,
+           renew: false,
+       }
 };
 
 module.exports = CONF

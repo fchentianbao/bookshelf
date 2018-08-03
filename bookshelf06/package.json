@@ -4,7 +4,7 @@
   "description": "bookshelf of Koa",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"start": "node app.js"
+    "start": "node app.js"
   },
   "keywords": [
     "Koa",
@@ -21,6 +21,7 @@
     "koa-static": "^4.0.1",
     "koa-nunjucks-2": "",
     "sqlite3": "",
-    "knex": ""
+    "knex": "",
+    "koa-session": ""
   }
 }

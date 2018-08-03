@@ -27,6 +27,7 @@ var knex = require('knex')(config.db);
         t.text('bctx');
         t.text('bremarke');
         t.float('bprice');
+        t.string('user', 100);
       });
     }
   });

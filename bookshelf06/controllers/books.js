@@ -9,7 +9,7 @@ var newBook = async (ctx, next) => {
 var list = async (ctx, next) => {
 
     var books = [];
-    await  knex.select('bkname', 'author').from(config.tbbook)
+    await  knex(config.tbbook).where({user: ctx.session.userinfo}).select('bkname', 'author')
         .catch(function (e) {
             console.error(e);
         })
@@ -18,7 +18,6 @@ var list = async (ctx, next) => {
             console.log(data);
             console.log("select books success");
             books = data;
-            
             }
         );
     await ctx.render('list', {books:books});  
@@ -50,12 +49,14 @@ var addBook = async (ctx, next) => {
         author = ctx.request.body.author || '',
         publish = ctx.request.body.publish || '',
         bkctx = ctx.request.body.context || '';
+        user = ctx.session.userinfo || '';
     
         let book = {
             bkname : name,
             author : author,
             bctx : bkctx,
-            bpublishtime :  publish
+            bpublishtime :  publish,
+            user : user
         }
 
         await knex(config.tbbook).insert(book)
@@ -63,9 +64,12 @@ var addBook = async (ctx, next) => {
             console.error(e);
         })
         .then(
-            console.log("feedback columns insert success")
+            console.log("add book success")
         );
-        await ctx.render('addbook', {name:name, author:author, bkctx : bkctx});   
+        var viewbook = `/viewBook/${name}`;
+        console.log(viewbook);
+        ctx.response.redirect(encodeURI(viewbook));
+       
 }
 
 module.exports = {

@@ -6,10 +6,13 @@ const controller = require('./routers/controller');
 const koanumjuck2 = require('koa-nunjucks-2')
 const config = require('./config')
 const initdb = require("./models/initdb")
-
+const session = require("koa-session")
 const path = require('path');
  
 const app = new Koa();
+
+app.keys = ['some secret hurr']; 
+app.use(session(config.sessionCon, app));
 
 app.use(bodyParser());
 
