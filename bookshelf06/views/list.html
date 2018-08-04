@@ -6,7 +6,8 @@
 <body>
     <h2>图书列表</h2>   <h5><a href="/newbook">新增图书</a></h5>
     {% for book in books %}
-    <p>书名： {{ book.bkname }}  作者 ： {{ book.author }} <a href="/viewBook/{{book.bkname}}"> 查看 </a> </p>
+    <p>书名： {{ book.bkname }}  作者 ： {{ book.author }} <a href="/viewBook/{{book.bkname}}"> 查看 </a> 
+         <a href="/delBook/{{book.bkname}}"> 删除 </a> </p>
     {% endfor %}
 </body>
 </html>

@@ -43,6 +43,20 @@ var viewBook = async (ctx, next) => {
     await ctx.render('viewbook', {books: books});
 }
 
+var delBook = async (ctx, next) => {
+    var name = ctx.params.bkname;
+    await   knex(config.tbbook).where({
+        bkname: name
+      }).del()
+        .catch(function (e) {
+            console.error(e);
+        })
+        .then(
+           console.log("delete success!")
+        );
+        ctx.response.redirect('/list');
+}
+
 var addBook = async (ctx, next) => {
     var
         name = ctx.request.body.bkname || '',
@@ -74,6 +88,7 @@ var addBook = async (ctx, next) => {
 
 module.exports = {
     "POST /addBook" : addBook,
+    "GET /delBook/:bkname" : delBook,
     "GET /viewBook/:bkname" : viewBook,
     "GET /list" : list,
     "GET /newBook" : newBook
