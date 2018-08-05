@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block main %}
+
+
+<div class="panel panel-default">
+     {% for book in books %}
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h3>书名： {{ book.bkname }} </h3>
+            <h4>作者 ： {{ book.author }} </h4>
+            <p> 内容简介： {{book.bctx}}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

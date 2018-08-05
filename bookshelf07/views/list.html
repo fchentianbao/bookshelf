@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block main %}
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <h2>图书列表</h2>
+    </div>
+</div>
+<div class="panel panel-default">
+    {% for book in books %}
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <p>书名： {{ book.bkname }} 作者 ： {{ book.author }}
+                <a href="/viewBook/{{book.bkname}}"> 查看 </a>
+                <a href="/delBook/{{book.bkname}}"> 删除 </a>
+            </p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+ {% endblock %}

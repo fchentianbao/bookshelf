@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block main %}
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <span class="glyphicon glyphicon-user"></span> 登录</h3>
+            </div>
+            <div class="panel-body">
+                <form action="/signin" method="post">
+                    <div class="form-group">
+                        <label>用户名</label>
+                        <input name="name" class="form-control" value="koa">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Password">
+                        <p class="help-block">Use password: 123456</p>
+                    </div>
+                    <button type="submit" class="btn btn-primary">登录</button>
+                    <a  target="_blank" href="/register">注册</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+
+{% endblock %}
