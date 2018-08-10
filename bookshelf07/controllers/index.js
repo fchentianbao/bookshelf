@@ -1,5 +1,9 @@
 const config = require('../config')
 var knex = require('knex')(config.db);
+const path =  require('path');
+const fs = require('fs');
+var MarkdownIt = require('markdown-it'),
+    md = new MarkdownIt();
 
 var mainPage = async (ctx, next) => {
     if (ctx.session.userinfo == undefined || ctx.session.userinfo == "" ){
@@ -17,6 +21,19 @@ var register = async (ctx, next) => {
     await ctx.render('register');
 }
 
+var about = async (ctx, next) => {
+    const rePath = path.join(path.dirname(__dirname), 'README.md');
+    let mdStr = fs.readFileSync(rePath, 'utf-8',  (err, data) => {
+       if (err){
+           console.log(err);
+       }
+    });
+    
+    console.log("mdstr ：" + mdStr);
+    mdStr = md.render(mdStr);
+    
+    await ctx.render('about', { markdownhtml: mdStr });
+}
 
 var signin = async (ctx, next) => {
     var
@@ -79,6 +96,7 @@ var registed = async (ctx, next) => {
 module.exports = {
     "GET /" : mainPage,
     "GET /index" : index,
+    "GET /about" : about,
     "POST /signin" : signin,
     "GET /register" : register,
     "POST /registed" : registed

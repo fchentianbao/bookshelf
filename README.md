@@ -29,16 +29,17 @@ nodejs  koa mysql 开发我的书架，用于整理个人图书
 ## 数据库设计
 user ｛name,  password,opneid}
 book info{bname,bisbn,bpress,publishtime,bauthor,btype,bctx,bprice,bremarke,bookcase}
-## 原型设计设计
+## 目录
 
-001，koa 我的书架， url 增删查改 
+- bookshelf01，koa 我的书架， 第一版 app.js 中实现用户登陆，添加图书/查看图书 
 错误处理
-002，koa 我的书架， 重构目录结构
-003   koa 我的书架， mvc 模板
-004   koa 我的书架， 数据库操作
-005   koa 我的书架，  界面美化
-006  静态资源
-007   卡我的书架 第三方登录微信登录
+- bookshelf02，koa  代码，整理项目代码目录结构，提取 路由函数到 controllers 目录，
+- bookshelf03，koa 我的书架， 重构路由，自动注册路由函数
+- bookshelf04，koa 我的书架，自动注册路由
+- bookshelf05，koa 我的书架， 增加模板 MVC 使用koa-nunjucks-2进行模板渲染
+- bookshelf06，koa 我的书架,使用 koa-kenx  sqlite 保存用户信息，图书信息，数据库操作
+- bookshelf07，koa 我的书架,使用 koa-static  静态资源,使用 bootstrap 进行界面美化
+
 008  koa我的书架，   restful API
 
 微信小程序 设计
